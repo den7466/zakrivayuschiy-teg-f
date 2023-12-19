@@ -15,6 +15,9 @@
 */
 
 /* TODO: При транзишн дергается весь остальной контент */
+/* TODO: Прожать изображения */
+/* TODO: Убрать пустые правила */
+/* TODO: Проверить паддинги */
 
 .page {
   min-inline-size: 320px;
@@ -79,6 +82,7 @@
 }
 
 .theme-menu__button {
+  padding: 0;
   text-transform: uppercase;
   background-color: transparent;
   border: none;
@@ -89,6 +93,35 @@
 
 .theme-menu__button:hover {
   opacity: .6;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: .6;
+}
+
+.theme-menu__button:focus-visible {
+  outline: none;
+  opacity: .6;
+}
+
+.theme-menu__button::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--main-color, #000);
+  opacity: .6;
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale .3s ease;
+}
+
+.theme-menu__button:focus-visible::after {
+  scale: 1 1;
 }
 
 .theme-menu__button:disabled {
@@ -103,7 +136,17 @@
   font-size: inherit;
   color: currentColor;
   top: 0;
-  left: -16px;
+  left: -21px;
+  animation: pointer .5s ease-in-out infinite alternate;
+}
+
+@keyframes pointer {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(4px);
+  }
 }
 
 .card {
@@ -182,7 +225,6 @@
 
 .card__like-button {
   background-color: transparent;
-  border: none;
   border: 2px solid var(--main-color, #000);
   padding: 12.5px 37px;
   cursor: pointer;
