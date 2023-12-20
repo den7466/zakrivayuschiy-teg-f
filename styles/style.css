@@ -1,4 +1,6 @@
-/* Здесь вы напишете основную часть стилей страницы.
+/*
+
+Здесь вы напишете основную часть стилей страницы.
 
 Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
 ✦ theme-dark — класс тёмной темы
@@ -224,6 +226,7 @@
 }
 
 .card__like-button {
+  position: relative;
   background-color: transparent;
   border: 2px solid var(--main-color, #000);
   padding: 12.5px 37px;
@@ -231,15 +234,57 @@
   font-family: var(--accent-font-family);
   font-size: 14px;
   line-height: .9;
+  color: var(--button-text-color, #fff);
+  transition: box-shadow .3s ease;
 }
+
+.card__like-button::before {
+  content: '';
+  display: block;
+  inset: 0;
+  position: absolute;
+  background-color: var(--main-color, #000);
+  z-index: 1;
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale .5s ease-in-out;
+}
+
+.card__like-button:hover::before {
+  scale: 1 1;
+}
+
+.card__like-button:focus {
+  outline: none;
+}
+
+.card__like-button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--main-color, #000);
+}
+
 .card__icon-button {
   background-color: transparent;
   border: none;
 }
 
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
 .like-icon {}
 
-.button__text {}
+.button__text {
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
+}
 
 .footer {
   padding-block-start: 52px;
@@ -247,10 +292,12 @@
 }
 
 .footer__button {
+  position: relative;
   margin: 0 auto;
   font-family: var(--accent-font-family);
   font-size: 14px;
   line-height: .9;
+  color: var(--button-text-color, #fff);
   padding: 15px 20px;
   display: flex;
   gap: 8px;
@@ -259,13 +306,38 @@
   background-color: var(--background-color, #fff);
   border: 2px solid var(--main-color, #000);
   cursor: pointer;
+  transition: box-shadow .3s ease;
+}
+
+.footer__button::before {
+  content: '';
+  display: block;
+  inset: 0;
+  position: absolute;
+  background-color: var(--main-color, #000);
+  z-index: 1;
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale .5s ease-in-out;
+}
+
+.footer__button:hover::before {
+  scale: 1 1;
+}
+
+.footer__button:focus {
+  outline: none;
+}
+
+.footer__button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--main-color, #000);
 }
 
 .footer__button-image-box {
   inline-size: 28px;
   block-size: 28px;
-}
-
-.footer__button-image {
-  color: var(--main-color, #000);
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
 }

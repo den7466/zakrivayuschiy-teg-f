@@ -14,6 +14,7 @@
   --gradient-grid-color: #d3d3d3;
   --bg-gradient-first-color: #e7e7e7;
   --bg-gradient-second-color: #1a1a1a;
+  --button-text-color: #fff;
 }
 
 :root.theme-dark {
@@ -25,6 +26,7 @@
   --gradient-grid-color: #000;
   --bg-gradient-first-color: #007f0c;
   --bg-gradient-second-color: #004306;
+  --button-text-color: #00cc14;
 }
 
 /* @media (prefers-color-scheme: dark) {
