@@ -76,7 +76,7 @@
       </acticle>
     </main>
     <footer class="footer">
-      <button class="footer__button">
+      <button class="footer__button" type="button" onclick="window.modalSave.showModal()">
         <svg class="footer__button-image-box" viewBox="0 0 39 39">
           <!-- TODO: автотест ругается на svg -->
           <use class="footer__button-image" href="./svg/floppy.svg#floppy">
@@ -84,6 +84,18 @@
         <span class="button__text">Сохранить на память</span>
       </button>
     </footer>
+    <dialog class="dialog" id="modalSave">
+      <div class="dialog__description">
+        <svg class="dialog__image-box" viewBox="0 0 39 39">
+          <!-- TODO: автотест ругается на svg -->
+          <use class="dialog__image" href="./svg/floppy.svg#floppy">
+        </svg>
+        <p class="dialog__text">Вставьте<br>дискету,&nbsp;чтобы<br>продолжить</p>
+      </div>
+      <button class="dialog__button" type="button" onclick="window.modalSave.close()">
+        <span class="button__text">ок</span>
+      </button>
+    </dialog>
     <script src="./scripts/like.js"></script>
   </body>
 </html>

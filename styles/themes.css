@@ -29,12 +29,16 @@
   --button-text-color: #00cc14;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --main-font-weight: 465;
     --title-font-weight: 785;
     --main-color: #00cc14;
     --accent-color: #000;
     --background-color: #000;
+    --gradient-grid-color: #000;
+    --bg-gradient-first-color: #007f0c;
+    --bg-gradient-second-color: #004306;
+    --button-text-color: #00cc14;
   }
-} */
+}
