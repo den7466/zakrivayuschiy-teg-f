@@ -174,7 +174,6 @@
   object-position: center;
 }
 
-/* TODO: сделать хотя бы один фильтр множественным */
 /* FILTERS */
 .card__image_dog {
   filter: sepia(90%);
