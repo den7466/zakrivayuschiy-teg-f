@@ -16,16 +16,13 @@
 
 */
 
-/* TODO: При транзишн дергается весь остальной контент */
+/* transform-origin: left;  для свг сердечка попробовать */
+/* для ис лайкед последнее свойство анимации сердца */
+
 /* TODO: Прожать изображения */
 /* TODO: Убрать пустые правила */
 /* TODO: Проверить паддинги */
 /* TODO: Последний штрих — предусмотреть перекрашивание контура обратно, когда сердечко выключат. Контур лучше возвращать на место побыстрее — линейно, за 0.1s, без задержек. */
-
-
-/* Шаг 12. Диалог */
-
-
 
 .page {
   min-inline-size: 320px;
@@ -206,7 +203,6 @@
 @supports((text-stroke: 1px var(--accent-color, #fff)) or (-webkit-text-stroke: 1px var(--accent-color, #fff))) {
   .card__label {
       -webkit-text-stroke: 1px var(--accent-color, #fff);
-      text-stroke: 1px var(--accent-color, #fff);
       text-shadow: none;
   }
 }
