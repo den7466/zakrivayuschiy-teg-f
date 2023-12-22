@@ -16,13 +16,8 @@
 
 */
 
-/* transform-origin: left;  для свг сердечка попробовать */
-/* для ис лайкед последнее свойство анимации сердца */
-
 /* TODO: Прожать изображения */
-/* TODO: Убрать пустые правила */
-/* TODO: Проверить паддинги */
-/* TODO: Последний штрих — предусмотреть перекрашивание контура обратно, когда сердечко выключат. Контур лучше возвращать на место побыстрее — линейно, за 0.1s, без задержек. */
+/* TODO: Портавить диалог по пиксель перфект */
 
 .page {
   min-inline-size: 320px;
@@ -47,11 +42,12 @@
   margin: 0 auto;
 }
 
+/* HEADER */
 .header {
   background-color: var(--background-color, #fff);
   margin-block-start: 100px;
   margin-block-end: 100px;
-  padding-block-start: 120px;
+  padding-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
   padding-block-end: 25px;
   display: flex;
   flex-direction: column;
@@ -63,14 +59,14 @@
 }
 
 .header__title {
-  font-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   font-weight: 400;
   text-transform: uppercase;
 }
 
 .header__description {
   font-family: inherit;
-  font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   font-weight: inherit;
   text-transform: uppercase;
   margin-block-start: 20px;
@@ -84,6 +80,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-inline-start: 20px;
 }
 
 .theme-menu__button {
@@ -145,15 +142,8 @@
   animation: pointer .5s ease-in-out infinite alternate;
 }
 
-@keyframes pointer {
-  from {
-    transform: translateX(0px);
-  }
-  to {
-    transform: translateX(4px);
-  }
-}
-
+/* MAIN */
+/* CARDS */
 .card {
   display: block;
   border: 2px solid var(--main-color, #000);
@@ -172,27 +162,60 @@
 
 .card__image-box {
   position: relative;
-}
-
-.card__image {
-  display: block;
-  inline-size: 100%;
-  object-fit: cover;
-  object-position: center;
   border-block-start: 2px solid var(--main-color);
   border-block-end: 2px solid var(--main-color);
 }
 
+.card__image {
+  inline-size: 100%;
+  display: block;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* FILTERS */
+.card__image_dog {
+  filter: sepia(90%);
+}
+
+.card__image_programmer {
+  filter: contrast(500%);
+}
+
+.card__image_keyboard {
+  filter: invert(0.7);
+}
+
+.card__image_ideas {
+  filter: blur(.5rem);
+}
+
+.card__image_family {
+  filter: saturate(25%);
+}
+
+.card__image_strategy {
+  filter: grayscale(1);
+}
+
+.card__image_depression {
+  filter: brightness(30%);
+}
+
+.card__image_study {
+  filter: hue-rotate(120deg);
+}
+
 .card__label {
   position: absolute;
-  top: 25px;
-  right: 11px;
+  top: 27px;
+  right: 25px;
   opacity: .5;
   font-family: var(--accent-font-family);
   font-size: 14px;
   font-weight: 400;
   mix-blend-mode: hard-light;
-  text-transform: uppercase;
   text-shadow:
     -1px 0 var(--accent-color, #fff),
     0 1px var(--accent-color, #fff),
@@ -217,14 +240,14 @@
 }
 
 .card__description {
-  margin-block-end: 25px;
+  margin-block-end: 28px;
   line-height: 1.16;
 }
 
 .card__buttons-box {
   display: flex;
   justify-content: end;
-  gap: 12px;
+  gap: 4px;
 }
 
 .card__like-button {
@@ -232,7 +255,7 @@
   position: relative;
   background-color: transparent;
   border: 2px solid var(--main-color, #000);
-  padding: 9px 17px;
+  padding: 10px 17px;
   cursor: pointer;
   font-family: var(--accent-font-family);
   font-size: 14px;
@@ -289,8 +312,13 @@
 .like-icon {
   object-fit: cover;
   object-position: center;
-  inline-size: 28px;
-  block-size: 28px;
+  inline-size: 39px;
+  block-size: 36px;
+  transform-origin: center;
+}
+
+.sparks {
+  opacity: 0;
 }
 
 .button__text {
@@ -329,77 +357,9 @@
   transition: fill .3s linear .05s;
 }
 
-.sparks {
-  opacity: 0;
-}
-
-.like-icon.is-liked .core {
-  animation: heart_core .3s linear forwards;
-}
-
-@keyframes heart_core {
-  from {
-    fill: transparent;
-  }
-  to {
-    fill: var(--bg-heart, #ff0000);
-  }
-}
-
-.like-icon.is-liked .main-body {
-  animation: heart_main-body .3s .05s linear forwards;
-}
-
-@keyframes heart_main-body {
-  from {
-    fill: transparent;
-  }
-  to {
-    fill: var(--bg-heart, #ff0000);
-  }
-}
-
-.like-icon.is-liked .contour {
-  animation: heart_contour .3s .06s linear forwards;
-}
-
-@keyframes heart_contour {
-  from {
-    fill: transparent;
-  }
-  to {
-    fill: var(--bg-heart, #ff0000);
-  }
-}
-
-.like-icon.is-liked {
-  animation: heart_scale .3s .1s ease-in reverse;
-}
-
-@keyframes heart_scale {
-  from {
-    scale: 1.5;
-  }
-  to {
-    scale: 1;
-  }
-}
-
-.like-icon.is-liked .sparks {
-  animation: heart_sparks .3s .3s ease-in reverse;
-}
-
-@keyframes heart_sparks {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
+/* FOOTER */
 .footer {
-  padding-block-start: 52px;
+  padding-block-start: 50px;
   padding-block-end: 100px;
 }
 
@@ -410,10 +370,9 @@
   font-size: 14px;
   line-height: .9;
   color: var(--button-text-color, #fff);
-  padding: 15px 20px;
+  padding: 14px 20px;
   display: flex;
   gap: 8px;
-  flex-direction: column;
   align-items: center;
   background-color: var(--background-color, #fff);
   border: 2px solid var(--main-color, #000);
@@ -447,13 +406,14 @@
 }
 
 .footer__button-image-box {
-  inline-size: 28px;
-  block-size: 28px;
+  inline-size: 21px;
+  block-size: 21px;
   position: relative;
   z-index: 2;
   mix-blend-mode: difference;
 }
 
+/* DIALOG */
 .dialog[open] {
   max-inline-size: 544px;
   display: flex;
@@ -479,7 +439,6 @@
 }
 
 .dialog__image-box {
-  /* flex-basis: 95.7px; */
   inline-size: 39px;
   block-size: 39px;
   mix-blend-mode: difference;
@@ -496,7 +455,6 @@
   inline-size: 100%;
   background-color: transparent;
   border: 2px solid var(--main-color, #fff);
-  /* mix-blend-mode: difference; */
   position: relative;
   padding: 9px 17px;
   cursor: pointer;
@@ -527,4 +485,22 @@
 .dialog__button:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0 0 var(--main-color, #000);
+}
+
+@media (width <= 375px) {
+  .card__label {
+    top: 25px;
+    right: 11px;
+  }
+
+  .footer__button {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  /* TODO: можно сделать клампом */
+  .footer__button-image-box {
+    inline-size: 28px;
+    block-size: 28px;
+  }
 }
